@@ -6,6 +6,7 @@
         body {
             background-image: url('waffle-background.png');
             background-size: cover;
+            background-position: center;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -33,8 +34,9 @@
         }
         canvas {
             margin-top: 20px;
-            width: 100% !important;
-            height: 300px !important;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
         }
         button {
             padding: 10px 20px;
@@ -78,7 +80,6 @@
 </head>
 <body>
     <div class="container">
-        <img src="jenkins-logo.png" alt="Jenkins Logo">
         <img src="docker-logo.png" alt="Docker Logo">
         <h1>Welcome to the world Techvaffel!</h1>
         <h2>Automation is the Key!</h2>
