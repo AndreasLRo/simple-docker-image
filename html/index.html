@@ -32,11 +32,12 @@
             font-size: 2em;
             margin: 10px 0;
         }
-        canvas {
+        .chart-container {
+            position: relative;
             margin-top: 20px;
             width: 100%;
             max-width: 600px;
-            height: auto;
+            height: 400px;
         }
         button {
             padding: 10px 20px;
@@ -84,7 +85,9 @@
         <h1>Welcome to the world Techvaffel!</h1>
         <h2>Automation is the Key!</h2>
 
-        <canvas id="myChart"></canvas>
+        <div class="chart-container">
+            <canvas id="myChart"></canvas>
+        </div>
         <button onclick="fetchQuote()">Get a Tech Quote</button>
         <p id="quote"></p>
     </div>
