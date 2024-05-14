@@ -1,15 +1,83 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Techvaffel</title>
-  </head>
-  <body>
-    <div align="center">
-      <img src="jenkins-logo.png">
-      <img src="docker-logo.png">
-      <h1>Welcome to the world Techvaffel!</h1>
-      <br>
-      <h2>Automation is the Key!</h2>
-      <br>
+    <style>
+        body {
+            background-image: url('waffle-background.jpg');
+            background-size: cover;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            font-size: 3em;
+        }
+        h2 {
+            font-size: 2em;
+        }
+        canvas {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <img src="jenkins-logo.png" alt="Jenkins Logo">
+        <img src="docker-logo.png" alt="Docker Logo">
+        <h1>Welcome to the world Techvaffel!</h1>
+        <h2>Automation is the Key!</h2>
+
+        <canvas id="myChart" width="400" height="200"></canvas>
+        <button onclick="fetchQuote()">Get a Tech Quote</button>
+        <p id="quote"></p>
     </div>
-  </body>
+
+    <script>
+        // Chart.js setup
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Techvaffel Users',
+                    data: [12, 19, 3, 5, 2, 3, 7],
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Fetch tech quote
+        function fetchQuote() {
+            const quotes = [
+                "Any sufficiently advanced technology is indistinguishable from magic. - Arthur C. Clarke",
+                "Technology is best when it brings people together. - Matt Mullenweg",
+                "The science of today is the technology of tomorrow. - Edward Teller",
+                "It has become appallingly obvious that our technology has exceeded our humanity. - Albert Einstein",
+                "The great growling engine of change - technology. - Alvin Toffler"
+            ];
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById('quote').innerText = randomQuote;
+        }
+    </script>
+</body>
 </html>
