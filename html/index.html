@@ -1,174 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Techvaffel</title>
+    <title>Welcome to Techvaffel</title>
     <style>
         body {
-            background-image: url('waffle-background.png');
-            background-size: cover;
-            background-position: center;
             font-family: Arial, sans-serif;
+            background-image: url('waffle-background.jpg');
+            background-size: cover;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #ffffff;
+            color: #fff;
         }
         .container {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 10px;
-            width: 60%;
-            max-width: 800px;
-        }
-        h1 {
-            font-size: 3em;
-            margin: 0;
-        }
-        h2 {
-            font-size: 2em;
-            margin: 10px 0;
-        }
-        .chart-container {
-            position: relative;
-            margin-top: 20px;
             width: 100%;
-            max-width: 600px;
-            height: 400px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 1em;
-            margin-top: 20px;
-            background-color: #ffffff;
-            color: #000000;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #dddddd;
-        }
-        #quote {
-            font-size: 1.2em;
-            margin-top: 20px;
-        }
-        .sidebar {
-            position: absolute;
-            top: 0;
-            right: 0;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.6);
         }
-        .sidebar button {
-            background-color: #007BFF;
-            color: #ffffff;
-            margin: 10px 0;
+        .navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
         }
-        .sidebar button:hover {
-            background-color: #0056b3;
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        .title {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .title img {
+            width: 100px;
+        }
+        .graph {
+            margin-top: 20px;
+            width: 80%;
+            height: 400px;
+        }
+        .button {
+            margin-top: 20px;
+        }
+        .testimonials {
+            margin-top: 20px;
+            width: 80%;
+            text-align: center;
+        }
+        .footer {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a href="#blog">Blog</a>
+    </div>
     <div class="container">
-        <img src="docker-logo.png" alt="Docker Logo">
-        <h1>Welcome to the world Techvaffel!</h1>
-        <h2>Automation is the Key!</h2>
-
-        <div class="chart-container">
-            <canvas id="myChart"></canvas>
+        <div class="title">
+            <img src="docker-logo.png" alt="Docker">
+            <h1>Welcome to the world Techvaffel!</h1>
+            <p>Automation is the Key!</p>
         </div>
-        <button onclick="fetchQuote()">Get a Tech Quote</button>
-        <p id="quote"></p>
+        <div class="graph" id="graphContainer"></div>
+        <div class="button">
+            <button onclick="window.location.href='tech_quote.html'">Get a Tech Quote</button>
+        </div>
+        <div class="testimonials">
+            <h2>User Testimonials</h2>
+            <p>"Techvaffel has revolutionized our automation process!" - A Satisfied Customer</p>
+            <p>"The best service we've ever used." - Happy Client</p>
+        </div>
     </div>
-
-    <div class="sidebar">
-        <button id="linkButton">Change Environment</button>
+    <div class="footer">
+        <p>&copy; 2024 Techvaffel. All rights reserved.</p>
+        <a href="#facebook">Facebook</a>
+        <a href="#twitter">Twitter</a>
+        <a href="#linkedin">LinkedIn</a>
     </div>
-
+    <div style="position: fixed; top: 50%; right: 0; transform: translateY(-50%);">
+        <button onclick="window.location.href='https://test.techvaffel.online/'" class="change-env-btn">Change Environment</button>
+    </div>
     <script>
-        // Chart.js setup
-        window.addEventListener('load', function() {
-            const ctx = document.getElementById('myChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                    datasets: [{
-                        label: 'Techvaffel Users',
-                        data: [12, 19, 3, 5, 2, 3, 7],
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 2,
-                        pointBackgroundColor: 'rgba(255, 99, 132, 1)',
-                        pointBorderColor: '#fff',
-                        pointRadius: 5,
-                        fill: false,
-                        tension: 0.1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            ticks: {
-                                color: '#ffffff'
-                            }
-                        },
-                        x: {
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            ticks: {
-                                color: '#ffffff'
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: '#ffffff'
-                            }
-                        }
-                    }
-                }
-            });
-        });
-
-        // Fetch tech quote
-        function fetchQuote() {
-            const quotes = [
-                "Any sufficiently advanced technology is indistinguishable from magic. - Arthur C. Clarke",
-                "Technology is best when it brings people together. - Matt Mullenweg",
-                "The science of today is the technology of tomorrow. - Edward Teller",
-                "It has become appallingly obvious that our technology has exceeded our humanity. - Albert Einstein",
-                "The great growling engine of change - technology. - Alvin Toffler"
-            ];
-            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-            document.getElementById('quote').innerText = randomQuote;
-        }
-
-        // Link button logic
-        document.getElementById('linkButton').addEventListener('click', function() {
-            if (window.location.hostname === 'techvaffel.online') {
-                window.location.href = 'https://test.techvaffel.online/';
-            } else {
-                window.location.href = 'https://techvaffel.online/';
-            }
+        var ctx = document.getElementById('graphContainer').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Techvaffel Users',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    data: [0, 10, 5, 2, 20, 30, 45]
+                }]
+            },
+            options: {}
         });
     </script>
 </body>
