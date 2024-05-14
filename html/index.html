@@ -20,7 +20,8 @@
             background: rgba(0, 0, 0, 0.6);
             padding: 20px;
             border-radius: 10px;
-            width: 80%;
+            width: 60%;
+            max-width: 800px;
         }
         h1 {
             font-size: 3em;
@@ -32,9 +33,8 @@
         }
         canvas {
             margin-top: 20px;
-            width: 100%;
-            max-width: 600px;
-            height: auto;
+            width: 100% !important;
+            height: 300px !important;
         }
         button {
             padding: 10px 20px;
@@ -83,7 +83,7 @@
         <h1>Welcome to the world Techvaffel!</h1>
         <h2>Automation is the Key!</h2>
 
-        <canvas id="myChart" width="400" height="200"></canvas>
+        <canvas id="myChart"></canvas>
         <button onclick="fetchQuote()">Get a Tech Quote</button>
         <p id="quote"></p>
     </div>
@@ -96,7 +96,7 @@
         // Chart.js setup
         window.addEventListener('load', function() {
             const ctx = document.getElementById('myChart').getContext('2d');
-            const myChart = new Chart(ctx, {
+            new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
