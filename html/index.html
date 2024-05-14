@@ -1,18 +1,224 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>World of Jenkins and Docker</title>
-  </head>
-  <body>
-    <div align="center">
-      <img src="jenkins-logo.png">
-      <img src="docker-logo.png">
-      <h1>Welcome to the world of Jenkins and Docker!</h1>
-      <h2>There is plenty to explore here...</h2>
-      <h2>You should be both patient and curious at same time :)</h2>
-      <br>
-      <h2>Automatisation is the Key!</h2>
-      <br>
-      <h2>This is a 100% working example :)</h2>
+<head>
+    <title>Techvaffel</title>
+    <style>
+        body {
+            background-image: url('waffle-background.png');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+        }
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+        h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        h2 {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+        .chart-container {
+            position: relative;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-top: 20px;
+            background-color: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #dddddd;
+        }
+        #quote {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        .sidebar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .sidebar button {
+            background-color: #007BFF;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        .sidebar button:hover {
+            background-color: #0056b3;
+        }
+        .navbar {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        .testimonials {
+            margin-top: 20px;
+            text-align: center;
+            color: #000000; /* Changed text color to black */
+        }
+        .footer {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px 0;
+            text-align: center;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Learning Modules</a>
+        <a href="#contact">Consultants</a>
+        <a href="#blog">Resources</a>
     </div>
-  </body>
+    <div class="container" id="home">
+        <img src="docker-logo.png" alt="Docker Logo">
+        <h1>Welcome to the world Techvaffel!</h1>
+        <h2>Automation is the Key!</h2>
+
+        <div class="chart-container">
+            <canvas id="myChart"></canvas>
+        </div>
+        <button onclick="fetchQuote()">Get a Tech Quote</button>
+        <p id="quote"></p>
+    </div>
+
+    <div class="testimonials">
+        <h2>User Testimonials</h2>
+        <p>"Techvaffel has revolutionized our automation process!" - A Satisfied Customer</p>
+        <p>"The best service we've ever used." - Happy Client</p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Techvaffel. All rights reserved.</p>
+        <a href="#facebook">Facebook</a>
+        <a href="#twitter">Twitter</a>
+        <a href="#linkedin">LinkedIn</a>
+    </div>
+
+    <div class="sidebar">
+        <button id="linkButton">Change Environment</button>
+    </div>
+
+    <script>
+        // Chart.js setup
+        window.addEventListener('load', function() {
+            const ctx = document.getElementById('myChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    datasets: [{
+                        label: 'Techvaffel Users',
+                        data: [12, 19, 3, 5, 2, 3, 7],
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(255, 99, 132, 1)',
+                        pointBorderColor: '#fff',
+                        pointRadius: 5,
+                        fill: false,
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#ffffff'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#ffffff'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#ffffff'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+        // Fetch tech quote
+        function fetchQuote() {
+            const quotes = [
+                "Any sufficiently advanced technology is indistinguishable from magic. - Arthur C. Clarke",
+                "Technology is best when it brings people together. - Matt Mullenweg",
+                "The science of today is the technology of tomorrow. - Edward Teller",
+                "It has become appallingly obvious that our technology has exceeded our humanity. - Albert Einstein",
+                "The great growling engine of change - technology. - Alvin Toffler"
+            ];
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById('quote').innerText = randomQuote;
+        }
+
+        // Link button logic
+        document.getElementById('linkButton').addEventListener('click', function() {
+            if (window.location.hostname === 'techvaffel.online') {
+                window.location.href = 'https://test.techvaffel.online/';
+            } else {
+                window.location.href = 'https://techvaffel.online/';
+            }
+        });
+    </script>
+</body>
 </html>
